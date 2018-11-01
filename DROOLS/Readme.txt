@@ -1,0 +1,1 @@
+Drools is open source rule engine, that is build on RETE algorithm
