@@ -1,0 +1,30 @@
+
+package drools.somedomain.rule1;
+
+import java.util.List;
+
+declare Server				//Server is a fact and I am an idiot , no i am not an idiot.. Hee haw, I am a developer now! LOL
+	name		:String
+	processors	:int
+	memory		:int
+	diskSpace	:int
+	virtualizations	:List
+	cpuUsage	:int
+end
+
+declare Virtualization		// Virtualization is a fact, too!
+	name		:String
+	diskSpace	:int
+	memory		:int
+end
+
+rule	"Check min server config"
+dialect "mvel"
+when
+	$server :	Server (processors <2 || memory < 1024 || diskSpace < 250)	
+then
+	System.out.println("Server " + $server.name + " rejected. No minimum configuration rule");
+	retract($server);
+end
+
+

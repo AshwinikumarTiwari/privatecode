@@ -1,0 +1,20 @@
+package	drools.somedomain.box01;
+
+
+query serverCpuUsage(int maxValue)
+	$server:	Server(cpuUsage <= maxValue )
+end
+
+
+rule "New virtualization request"
+calendars "only-weekdays"
+
+when
+	$request	:VirtualizationRequest($serverName: serverName)
+	$server		:Server(name==$serverName)
+then
+	System.out.println("New virtualization added on server " + $serverName);
+	$server.getVirtualizations().add($request.getVirtualization());
+	$request.setSuccessful(new Boolean(true));
+	retract($request);
+end

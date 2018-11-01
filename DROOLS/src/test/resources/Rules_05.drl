@@ -1,0 +1,28 @@
+
+package drools.somedomain.rule5
+
+import drools.somedomain.box01.Server
+import java.util.Date
+import java.util.List
+
+rule "rule 1"
+when
+	$server:	Server(processors==2, memory==1024)
+then
+	retract($server);
+end
+
+rule "rule 2"
+when
+	$server		:Server(processors==2,processors!=2)
+then
+	retract($server);
+end
+
+rule "rule 3"
+when
+	$server:	Server(processors==2, memory==1024)
+then
+	retract($server);
+end
+
