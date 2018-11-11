@@ -7,4 +7,4 @@ this is the first change...
 
 
 
-and i am very fast to push it
+and i am very fast and eager to push or commit it
